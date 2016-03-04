@@ -45,6 +45,7 @@ html, body {
   font-size: 48px;
 }
 
-.news {
-  margin-top: 10px;
+.news-block {
+  padding: 10px 0px;
+  border-bottom: 2px dashed grey;
 }

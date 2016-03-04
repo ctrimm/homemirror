@@ -2,7 +2,8 @@
  * Collections.
  */
 
-Headlines = new Mongo.Collection("headlines");
+travelHeadlines = new Mongo.Collection("travelHeadlines");
+techHeadlines = new Mongo.Collection("techHeadlines");
 
 /**
  * Client.
@@ -12,8 +13,11 @@ if (Meteor.isClient) {
 
   // When Headlines updates, send update to news template.
   Template.news.helpers({
-    headlines: function() {
-      return Headlines.find({});
+    travelHeadlines: function() {
+      return travelHeadlines.find({});
+    },
+    techHeadlines: function() {
+      return techHeadlines.find({});
     }
   });
   Meteor.call('newsStart');
@@ -42,17 +46,18 @@ function nytimes() {
   var travelContent = JSON.parse(travelRes.content);
 
   // Save to Collection.
-  Headlines.remove({});
+  travelHeadlines.remove({});
   for (var i = 0; i < 5; i++) {
-    Headlines.insert(travelContent.results[i]);
+    travelHeadlines.insert(travelContent.results[i]);
   }
   
-  var technologyUrl = 'http://api.nytimes.com/svc/topstories/v1/technology.json?api-key=';
-  var technologyGet = Meteor.wrapAsync(HTTP.get);
-  var technologyRes = technologyGet(technologyUrl + apiKey);
-  var technologyContent = JSON.parse(technologyRes.content);
+  var techUrl = 'http://api.nytimes.com/svc/topstories/v1/technology.json?api-key=';
+  var techGet = Meteor.wrapAsync(HTTP.get);
+  var techRes = techGet(techUrl + apiKey);
+  var techContent = JSON.parse(techRes.content);
+  techHeadlines.remove({});
   for (var i = 0; i < 5; i++) {
-    Headlines.insert(technologyContent.results[i]);
+    techHeadlines.insert(techContent.results[i]);
   }
 }
 
