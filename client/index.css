@@ -39,3 +39,8 @@ html, body {
   font-family: "Open Sans";
   font-weight: bold;
 }
+
+.weather-lg {
+  font-weight:700;
+  font-size: 48px;
+}
