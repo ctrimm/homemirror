@@ -44,7 +44,6 @@ function nytimes() {
   // Save to Collection.
   Headlines.remove({});
   for (var i = 0; i < 5; i++) {
-    console.log(travelContent.results[i]);
     Headlines.insert(travelContent.results[i]);
   }
   
@@ -53,7 +52,6 @@ function nytimes() {
   var technologyRes = technologyGet(technologyUrl + apiKey);
   var technologyContent = JSON.parse(technologyRes.content);
   for (var i = 0; i < 5; i++) {
-    console.log(technologyContent.results[i]);
     Headlines.insert(technologyContent.results[i]);
   }
 }
