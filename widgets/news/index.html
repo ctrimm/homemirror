@@ -1,6 +1,11 @@
 <template name="news">
-  <div style="margin-top: 10px">
-    {{#each headlines}}
+  <div class="news-block">
+    {{#each travelHeadlines}}
+      <span style="color: grey">{{geo_facet.[0]}}</span> {{title}}<br/>
+    {{/each}}
+  </div>
+  <div class="news-block">
+    {{#each techHeadlines}}
       <span style="color: grey">{{geo_facet.[0]}}</span> {{title}}<br/>
     {{/each}}
   </div>

@@ -1,4 +1,3 @@
-
 /**
  * Icon mapping.
  */
@@ -68,7 +67,7 @@ if (Meteor.isServer) {
   Meteor.methods({
     weatherStart: function() {
       forecast();
-      SyncedCron.start();
+      // SyncedCron.start();
     }
   });
 }
@@ -97,10 +96,10 @@ function forecast() {
  * Cronjob.
  */
 
-SyncedCron.add({
-  name: 'Get forecast',
-  schedule: function(parser) {
-    return parser.cron('0 0 0/1 1/1 * ? *');
-  },
-  job: forecast
-});
+// SyncedCron.add({
+//   name: 'Get forecast',
+//   schedule: function(parser) {
+//     return parser.cron('0 0 0/1 1/1 * ? *');
+//   },
+//   job: forecast
+// });
